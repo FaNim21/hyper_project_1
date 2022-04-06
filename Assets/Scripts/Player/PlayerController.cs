@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Entity
 {
     public static PlayerController instance { get; private set; }
 
@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     [ReadOnly] public Vector2 aimDirection;
 
 
-    private void Awake()
+    protected override void Awake()
     {
         DontDestroyOnLoad(this);
         if (instance == null)
@@ -24,16 +24,16 @@ public class PlayerController : MonoBehaviour
         else
             Destroy(gameObject);
     }
-    private void Update()
+    protected override void Update()
     {
         HandleMovement();
 
         mousePosition = Utils.GetMouseWorldPosition();
         aimDirection = (mousePosition - (Vector2)transform.position).normalized;
     }
-    private void FixedUpdate()
+    protected override void FixedUpdate()
     {
-        rb.velocity =  Time.deltaTime * speed * inputDirection;
+        rb.MovePosition((Vector2)transform.position + speed * Time.deltaTime * inputDirection);
     }
 
     private void HandleMovement()
