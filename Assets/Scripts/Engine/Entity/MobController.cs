@@ -24,11 +24,11 @@ public class MobController : Entity
     }
     protected override void FixedUpdate()
     {
-        if(IsTargetInDistance(chaseRange))
+        if(IsTargetInDistance(chaseRange) && !IsTargetInDistance(1f))
             rb.MovePosition((Vector2)transform.position + moveSpeed * Time.deltaTime * direction);
     }
 
-    public void OnDrawGizmosSelected()
+    public void OnDrawGizmos()
     {
         Gizmos.color = Color.cyan;
         Gizmos.DrawRay(transform.position, direction * 3);
