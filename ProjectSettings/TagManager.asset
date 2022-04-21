@@ -15,8 +15,8 @@ TagManager:
   - 
   - Player
   - Mob
-  - 
-  - 
+  - ProjectilePlayer
+  - ProjectileMob
   - 
   - 
   - 

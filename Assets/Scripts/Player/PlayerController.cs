@@ -18,11 +18,13 @@ public class PlayerController : Entity
 
     [Header("Debug")]
     [ReadOnly] public float currentSpeed;
+    [ReadOnly] public float aimAngle;
     [ReadOnly] public Vector2 inputDirection;
     [ReadOnly] public Vector2 mousePosition;
     [ReadOnly] public Vector2 aimDirection;
 
     private readonly float _lerpBetweenSpeed = 2f;
+    private string _layerMask = "ProjectilePlayer";
 
 
     protected override void Awake()
@@ -42,6 +44,9 @@ public class PlayerController : Entity
 
         mousePosition = Utils.GetMouseWorldPosition();
         aimDirection = (mousePosition - (Vector2)transform.position).normalized;
+        aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
+
+        if (Input.GetMouseButtonDown(0)) Shoot();
 
         /*int layerMask = ~(LayerMask.GetMask("Player"));
         RaycastHit2D hit = Physics2D.Raycast(transform.position, aimDirection, 2f, layerMask);
@@ -58,6 +63,12 @@ public class PlayerController : Entity
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawRay(transform.position, aimDirection * 2);
+    }
+
+    private void Shoot()
+    {
+        var projectile = Instantiate(GameManager.projectile, transform.position, Quaternion.Euler(0, 0, aimAngle));
+        projectile.Setup(_layerMask, aimDirection, 4f, 10);
     }
 
     /// <summary>
