@@ -42,10 +42,22 @@ public class PlayerController : Entity
 
         mousePosition = Utils.GetMouseWorldPosition();
         aimDirection = (mousePosition - (Vector2)transform.position).normalized;
+
+        /*int layerMask = ~(LayerMask.GetMask("Player"));
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, aimDirection, 2f, layerMask);
+
+        if (hit.collider != null)
+            Debug.Log(hit.collider.gameObject.name);*/
     }
     protected override void FixedUpdate()
     {
         rb.MovePosition(rb.position + currentSpeed * Time.deltaTime * inputDirection);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawRay(transform.position, aimDirection * 2);
     }
 
     /// <summary>
