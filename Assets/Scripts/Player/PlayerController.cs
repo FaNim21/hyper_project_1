@@ -7,6 +7,7 @@ public class PlayerController : Entity
 
     [Header("Komponenty")]
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Animator animator;
 
     [Header("Obiekty")]
     public GameObject Phone;
@@ -15,6 +16,7 @@ public class PlayerController : Entity
     [Header("G³ówne wartoœci")]
     public float speed;
     public float sprintSpeed;
+    public float projectileSpeed;
 
     [Header("Debug")]
     [ReadOnly] public float currentSpeed;
@@ -24,7 +26,7 @@ public class PlayerController : Entity
     [ReadOnly] public Vector2 aimDirection;
 
     private readonly float _lerpBetweenSpeed = 2f;
-    private string _layerMask = "ProjectilePlayer";
+    private readonly string _layerMask = "ProjectilePlayer";
 
 
     protected override void Awake()
@@ -54,21 +56,31 @@ public class PlayerController : Entity
         if (hit.collider != null)
             Debug.Log(hit.collider.gameObject.name);*/
     }
+
+    /// <summary>
+    /// Unity event do aktualizawania rzeczy pod FIZYKE
+    /// </summary>
     protected override void FixedUpdate()
     {
         rb.MovePosition(rb.position + currentSpeed * Time.deltaTime * inputDirection);
     }
 
+    /// <summary>
+    /// Rysujemy linie pomocnicze do obserwowania wszystkich najwazniejszych zachowan i wartosci
+    /// </summary>
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawRay(transform.position, aimDirection * 2);
     }
 
+    /// <summary>
+    /// Najprostszy sposob strzelania projetile na range jako jako Instatiate projectile prefab ktory znajduje sie w Game managerze i nadawanie mu odrazu wartosci do dzialania
+    /// </summary>
     private void Shoot()
     {
         var projectile = Instantiate(GameManager.projectile, transform.position, Quaternion.Euler(0, 0, aimAngle));
-        projectile.Setup(_layerMask, aimDirection, 4f, 10);
+        projectile.Setup(_layerMask, Quaternion.Euler(0, 0, aimAngle) * Vector2.right, projectileSpeed, 10);
     }
 
     /// <summary>
@@ -87,18 +99,25 @@ public class PlayerController : Entity
     }
 
     /// <summary>
+    /// Pobieranie i ustalanie najwazniejszych parametrow pod wczytywanie klawiszow wsad i wysylanie wartosci do animacji postaci na movement
+    /// </summary>
+    private void HandleMovement()
+    {
+        inputDirection.x = Input.GetAxisRaw("Horizontal");
+        inputDirection.y = Input.GetAxisRaw("Vertical");
+        inputDirection = inputDirection.normalized;
+
+        animator.SetFloat("Horizontal", inputDirection.x);
+        animator.SetFloat("Vertical", inputDirection.y);
+        animator.SetFloat("Speed", inputDirection.magnitude);
+    }
+
+    /// <summary>
     /// Tymczasowe metoda w Player Controllerze ktora odpowiada za Dezaktywacje i aktywacje main menu z poziomu telefonu
     /// </summary>
     public void OpenCloseMainMenu()
     {
         canvas.SetActive(!canvas.activeSelf);
         Time.timeScale = canvas.activeSelf ? 0 : 1;
-    }
-
-    private void HandleMovement()
-    {
-        inputDirection.x = Input.GetAxisRaw("Horizontal");
-        inputDirection.y = Input.GetAxisRaw("Vertical");
-        inputDirection = inputDirection.normalized;
     }
 }
