@@ -83,6 +83,11 @@ public class PlayerController : Entity
         projectile.Setup(_layerMask, Quaternion.Euler(0, 0, aimAngle) * Vector2.right, projectileSpeed, 10);
     }
 
+    public override void TakeDamage(int damage)
+    {
+        Debug.Log("dmg");
+    }
+
     /// <summary>
     /// Metoda zawieraj¹ca wszystkie odwolania do klawiatury
     /// np. Esc - jako wejscie do menu

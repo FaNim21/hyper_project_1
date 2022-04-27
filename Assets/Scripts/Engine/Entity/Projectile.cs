@@ -30,6 +30,9 @@ public class Projectile : MonoBehaviour
     {
         Entity entity = collision.transform.parent.GetComponent<Entity>();
         if (entity != null)
-            Debug.Log(entity.name);
+        {
+            entity.TakeDamage(damage);
+            Destroy(gameObject);
+        }
     }
 }

@@ -9,7 +9,6 @@ public class MobController : Entity
     public Transform target;
 
     [Header("Wartosci")]
-    public float health;
     public float chaseRange;
     public float moveSpeed;
 
@@ -21,6 +20,8 @@ public class MobController : Entity
     {
         direction = (target.position - transform.position).normalized;
         toTargetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+        if (health <= 0) Destroy(gameObject);
     }
     protected override void FixedUpdate()
     {
@@ -35,6 +36,13 @@ public class MobController : Entity
 
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, chaseRange);
+    }
+
+    public override void TakeDamage(int damage)
+    {
+        //Zrobinie statycznej klasy dla Projectile
+        //Narazie jest to bazowa metoda do przyjmowania dmg
+        health -= damage;
     }
 
     public bool IsTargetInDistance(float distance)
