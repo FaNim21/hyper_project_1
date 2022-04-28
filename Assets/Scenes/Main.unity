@@ -7527,4 +7527,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entities:
   - {fileID: 1511643880}
+  prefabPopup: {fileID: 3934579647951817699, guid: b7c9a8f1d035f374c98d5ce0419935c4, type: 3}
   prefabProjectile: {fileID: 3940089762791619608, guid: dc73fbdf18c9dc5419bf8b52ca5efe45, type: 3}

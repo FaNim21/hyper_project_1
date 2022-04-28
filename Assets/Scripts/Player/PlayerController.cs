@@ -79,7 +79,7 @@ public class PlayerController : Entity
     /// </summary>
     private void Shoot()
     {
-        var projectile = Instantiate(GameManager.projectile, transform.position, Quaternion.Euler(0, 0, aimAngle));
+        var projectile = Instantiate(GameManager.Projectile, transform.position, Quaternion.Euler(0, 0, aimAngle));
         projectile.Setup(_layerMask, Quaternion.Euler(0, 0, aimAngle) * Vector2.right, projectileSpeed, 10);
     }
 
