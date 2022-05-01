@@ -1,5 +1,5 @@
-using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerController : Entity
 {
@@ -8,6 +8,7 @@ public class PlayerController : Entity
     [Header("Komponenty")]
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator animator;
+    [SerializeField] private CanvasHandle canvasHandle;
 
     [Header("Obiekty")]
     public GameObject Phone;
@@ -48,7 +49,7 @@ public class PlayerController : Entity
         aimDirection = (mousePosition - (Vector2)transform.position).normalized;
         aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
 
-        if (Input.GetMouseButtonDown(0)) Shoot();
+        if (Input.GetMouseButtonDown(0) && !canvasHandle.isCanvasEnabled && !EventSystem.current.IsPointerOverGameObject()) Shoot();
 
         /*int layerMask = ~(LayerMask.GetMask("Player"));
         RaycastHit2D hit = Physics2D.Raycast(transform.position, aimDirection, 2f, layerMask);
@@ -83,6 +84,9 @@ public class PlayerController : Entity
         projectile.Setup(_layerMask, Quaternion.Euler(0, 0, aimAngle) * Vector2.right, projectileSpeed, 10);
     }
 
+    /// <summary>
+    /// Postac przyjmuje Damage od projectile wypuszczonego przez moba lub na melee
+    /// </summary>
     public override void TakeDamage(int damage)
     {
         Debug.Log("dmg");
@@ -94,9 +98,6 @@ public class PlayerController : Entity
     /// </summary>
     private void HandleInput()
     {
-        //Na kliknieciu escape aktywujemy i dezaktywujemy Telefon
-        if (Input.GetKeyDown(KeyCode.Escape)) Phone.SetActive(!Phone.activeSelf);
-
         if (Input.GetKey(KeyCode.LeftShift))
             currentSpeed = Mathf.Lerp(currentSpeed, sprintSpeed, _lerpBetweenSpeed * Time.deltaTime);
         else
@@ -112,17 +113,9 @@ public class PlayerController : Entity
         inputDirection.y = Input.GetAxisRaw("Vertical");
         inputDirection = inputDirection.normalized;
 
+        if (canvasHandle.isCanvasEnabled) return;
         animator.SetFloat("Horizontal", inputDirection.x);
         animator.SetFloat("Vertical", inputDirection.y);
         animator.SetFloat("Speed", inputDirection.magnitude);
-    }
-
-    /// <summary>
-    /// Tymczasowe metoda w Player Controllerze ktora odpowiada za Dezaktywacje i aktywacje main menu z poziomu telefonu
-    /// </summary>
-    public void OpenCloseMainMenu()
-    {
-        canvas.SetActive(!canvas.activeSelf);
-        Time.timeScale = canvas.activeSelf ? 0 : 1;
     }
 }
