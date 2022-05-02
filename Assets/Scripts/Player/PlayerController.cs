@@ -39,6 +39,7 @@ public class PlayerController : Entity
             Destroy(gameObject);
 
         currentSpeed = speed;
+        animator.SetFloat("Horizontal", 1);
     }
     protected override void Update()
     {
@@ -114,8 +115,13 @@ public class PlayerController : Entity
         inputDirection = inputDirection.normalized;
 
         if (canvasHandle.isCanvasEnabled) return;
-        animator.SetFloat("Horizontal", inputDirection.x);
-        animator.SetFloat("Vertical", inputDirection.y);
+
+        if (inputDirection != Vector2.zero)
+        {
+            animator.SetFloat("Horizontal", inputDirection.x);
+            animator.SetFloat("Vertical", inputDirection.y);
+        }
+
         animator.SetFloat("Speed", inputDirection.magnitude);
     }
 }
