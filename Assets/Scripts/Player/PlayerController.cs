@@ -1,6 +1,3 @@
-using UnityEngine;
-using UnityEngine.EventSystems;
-
 public class PlayerController : Entity
 {
     public static PlayerController instance { get; private set; }
