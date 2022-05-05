@@ -1,5 +1,8 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using HyperRPG.Engine.Visual;
+using TMPro;
 
 public class PlayerController : Entity
 {
@@ -14,12 +17,18 @@ public class PlayerController : Entity
     public GameObject Phone;
     public GameObject canvas;
 
+    [Header("UI")]
+    public Image healthFill;
+    public TextMeshProUGUI healthValue;
+    public TextMeshProUGUI maxHealthValue;
+
     [Header("G³ówne wartoœci")]
     public float speed;
     public float sprintSpeed;
     public float projectileSpeed;
 
     [Header("Debug")]
+    [ReadOnly] public bool isInvulnerable;
     [ReadOnly] public float currentSpeed;
     [ReadOnly] public float aimAngle;
     [ReadOnly] public Vector2 inputDirection;
@@ -38,6 +47,12 @@ public class PlayerController : Entity
         else
             Destroy(gameObject);
 
+        base.Awake();
+
+        healthValue.SetText(health.ToString());
+        maxHealthValue.SetText(maxHealth.ToString());
+        healthFill.fillAmount = health / maxHealth;
+
         currentSpeed = speed;
         animator.SetFloat("Horizontal", 1);
     }
@@ -52,11 +67,7 @@ public class PlayerController : Entity
 
         if (Input.GetMouseButtonDown(0) && !canvasHandle.isCanvasEnabled && !EventSystem.current.IsPointerOverGameObject()) Shoot();
 
-        /*int layerMask = ~(LayerMask.GetMask("Player"));
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, aimDirection, 2f, layerMask);
-
-        if (hit.collider != null)
-            Debug.Log(hit.collider.gameObject.name);*/
+        if (health <= 0f) Respawn();
     }
 
     /// <summary>
@@ -74,23 +85,6 @@ public class PlayerController : Entity
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawRay(transform.position, aimDirection * 2);
-    }
-
-    /// <summary>
-    /// Najprostszy sposob strzelania projetile na range jako jako Instatiate projectile prefab ktory znajduje sie w Game managerze i nadawanie mu odrazu wartosci do dzialania
-    /// </summary>
-    private void Shoot()
-    {
-        var projectile = Instantiate(GameManager.Projectile, transform.position, Quaternion.Euler(0, 0, aimAngle));
-        projectile.Setup(_layerMask, Quaternion.Euler(0, 0, aimAngle) * Vector2.right, projectileSpeed, 10);
-    }
-
-    /// <summary>
-    /// Postac przyjmuje Damage od projectile wypuszczonego przez moba lub na melee
-    /// </summary>
-    public override void TakeDamage(int damage)
-    {
-        Debug.Log("dmg");
     }
 
     /// <summary>
@@ -123,5 +117,37 @@ public class PlayerController : Entity
         }
 
         animator.SetFloat("Speed", inputDirection.magnitude);
+    }
+
+    /// <summary>
+    /// Najprostszy sposob strzelania projetile na range jako jako Instatiate projectile prefab ktory znajduje sie w Game managerze i nadawanie mu odrazu wartosci do dzialania
+    /// </summary>
+    private void Shoot()
+    {
+        var projectile = Instantiate(GameManager.Projectile, transform.position, Quaternion.Euler(0, 0, aimAngle));
+        projectile.Setup(_layerMask, Quaternion.Euler(0, 0, aimAngle) * Vector2.right, projectileSpeed, 10);
+    }
+
+    /// <summary>
+    /// Postac przyjmuje Damage od projectile wypuszczonego przez moba lub na melee
+    /// </summary>
+    public override void TakeDamage(int damage)
+    {
+        if (damage <= 0 || isInvulnerable) return;
+
+        health -= damage;
+
+        Popup.Create(transform.position, damage.ToString(), Color.red, transform);
+        UpdateHealthBar();
+    }
+    private void UpdateHealthBar()
+    {
+        healthFill.fillAmount = health / maxHealth;
+        healthValue.SetText(health.ToString());
+    }
+
+    public void Respawn()
+    {
+        health = maxHealth;
     }
 }

@@ -81,7 +81,7 @@ namespace HyperRPG.Engine.Visual
             moveYSpeed = Mathf.Lerp(moveYSpeed, 0, lerpSpeed * Time.deltaTime);
             movedText += new Vector3(0, moveYSpeed) * Time.deltaTime;
 
-            transform.localPosition = Vector3.zero + new Vector3(0, 0.5f, 0) + movedText;
+            transform.localPosition = Vector3.zero + new Vector3(0, 0.9f, 0) + movedText;
 
             if (timeAlive >= 1f)
                 _pool.Release(_popup);
