@@ -1,3 +1,10 @@
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using HyperRPG.Engine.Visual;
+using TMPro;
+
+
 public class PlayerController : Entity
 {
     public static PlayerController instance { get; private set; }
