@@ -14,6 +14,7 @@ public class CanvasHandle : MonoBehaviour
     public GameObject[] uiObjects;
     public GameObject canvasPhone;
     public GameObject canvasMainMenu;
+    public GameObject canvasEquipment;
 
     [Header("Debug")]
     [ReadOnly] public bool isCanvasEnabled;
@@ -29,6 +30,11 @@ public class CanvasHandle : MonoBehaviour
                 canvasPhone.SetActive(false);
             else
                 ChangeVisibility(ref canvasMainMenu);
+        }
+        // Dodane przez Jacka (do testów)
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            canvasEquipment.SetActive(!canvasEquipment.activeSelf);
         }
     }
 
