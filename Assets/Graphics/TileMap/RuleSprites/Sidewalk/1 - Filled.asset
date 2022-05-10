@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: chodnik all_7
+  m_Name: 1 - Filled
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 1653233742, guid: 65cd871303f80874cbf2e802e844bfba, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6a8a482d527039a40b361911e20224ab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
