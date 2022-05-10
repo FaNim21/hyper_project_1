@@ -39,7 +39,7 @@ public class PlayerController : Entity
     private readonly string _layerMask = "ProjectilePlayer";
 
 
-    protected override void Awake()
+    public override void Awake()
     {
         DontDestroyOnLoad(this);
         if (instance == null)
@@ -56,7 +56,7 @@ public class PlayerController : Entity
         currentSpeed = speed;
         animator.SetFloat("Horizontal", 1);
     }
-    protected override void Update()
+    public override void Update()
     {
         HandleMovement();
         HandleInput();
@@ -73,7 +73,7 @@ public class PlayerController : Entity
     /// <summary>
     /// Unity event do aktualizawania rzeczy pod FIZYKE
     /// </summary>
-    protected override void FixedUpdate()
+    public override void FixedUpdate()
     {
         rb.MovePosition(rb.position + currentSpeed * Time.deltaTime * inputDirection);
     }

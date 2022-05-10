@@ -28,13 +28,13 @@ public class MobController : Entity
 
     private readonly string _layerMask = "ProjectileMob";
 
-    protected override void Awake()
+    public override void Awake()
     {
         base.Awake();
 
         mobs.Add(this);
     }
-    protected override void Update()
+    public override void Update()
     {
         base.Update();
 
@@ -45,7 +45,7 @@ public class MobController : Entity
 
         //if (health <= 0) Destroy(gameObject);
     }
-    protected override void FixedUpdate()
+    public override void FixedUpdate()
     {
         if (IsTargetInDistance(chaseRange) && !IsTargetInDistance(1f))
             rb.MovePosition(rb.position + moveSpeed * Time.deltaTime * direction);
@@ -137,23 +137,24 @@ public class MobController : Entity
 
         Entity closestMob = null;
 
-        //TODO: Zoptymalizowac to
         for (int i = 0; i < mobs.Count; i++)
         {
             var currentMob = mobs[i];
+            float sqrDistance = (currentMob.position - position).sqrMagnitude;
 
-            if (Vector2.Distance(position, currentMob.position) > range)
+            if (sqrDistance > range * range)
                 continue;
 
-            if (closestMob == null)
-                closestMob = currentMob;
-            else
+            if(closestMob != null)
             {
-                if (Vector2.Distance(position, currentMob.position) < Vector2.Distance(position, closestMob.position))
+                if (sqrDistance < Vector2.Distance(position, closestMob.position))
                 {
                     closestMob = currentMob;
+                    continue;
                 }
             }
+
+            closestMob = currentMob;
         }
         return closestMob;
     }
@@ -163,16 +164,17 @@ public class MobController : Entity
 
         List<Entity> inRangeMobs = new();
 
-        //TODO: To tez zoptymalizowac
         for (int i = 0; i < mobs.Count; i++)
         {
             var currentMob = mobs[i];
 
-            if (Vector2.Distance(position, currentMob.position) <= range)
+            float sqrDistance = (currentMob.position - position).sqrMagnitude;
+            if (sqrDistance <= range * range)
                 inRangeMobs.Add(currentMob);
         }
 
         //TO ROBI GARBAGE COLLECTION ZMIENIC NA TOTALNIE COS INNEGO
+        //to tez zalezy gdzie bedzie to uzywane bo musialo by to wspolgrac z klasa w ktorej jest czyli tylko w przypadku mobControllera to zadziala zeby tu dac liste mobow w zasiegu i do niej to dodawac zamiast wyrzucac tablice z metody
         return inRangeMobs;
     }
 }
