@@ -61,6 +61,10 @@ public class PlayerController : Entity
         HandleMovement();
         HandleInput();
 
+        base.Update();
+
+        Debug.Log(MobController.GetDistanceOfClosestMob(position));
+
         mousePosition = Utils.GetMouseWorldPosition();
         aimDirection = (mousePosition - (Vector2)transform.position).normalized;
         aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
@@ -83,8 +87,10 @@ public class PlayerController : Entity
     /// </summary>
     private void OnDrawGizmos()
     {
+        if (transform == null) return;
+
         Gizmos.color = Color.blue;
-        Gizmos.DrawRay(transform.position, aimDirection * 2);
+        Gizmos.DrawRay(position, aimDirection * 2);
     }
 
     /// <summary>

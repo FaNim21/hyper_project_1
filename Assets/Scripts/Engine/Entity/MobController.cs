@@ -22,6 +22,7 @@ public class MobController : Entity
     public float shootingCooldown;
 
     [Header("Debug")]
+    public bool isGizmosEnabled;
     [SerializeField, ReadOnly] private bool isShooting;
     [SerializeField, ReadOnly] private Vector2 direction;
     [SerializeField, ReadOnly] private float toTargetAngle;
@@ -43,21 +44,27 @@ public class MobController : Entity
 
         if (IsTargetInDistance(chaseRange) && !isShooting) StartCoroutine(Shooting());
 
-        //if (health <= 0) Destroy(gameObject);
+        if (health <= 0)
+        {
+            mobs.Remove(this);
+            Destroy(gameObject);
+        }
     }
     public override void FixedUpdate()
     {
         if (IsTargetInDistance(chaseRange) && !IsTargetInDistance(1f))
-            rb.MovePosition(rb.position + moveSpeed * Time.deltaTime * direction);
+            rb.MovePosition(rb.position + Separation() * 2f + moveSpeed * Time.deltaTime * direction);
     }
 
     public void OnDrawGizmos()
     {
+        if (transform == null || !isGizmosEnabled) return;
+
         Gizmos.color = Color.cyan;
-        Gizmos.DrawRay(transform.position, direction * 3);
+        Gizmos.DrawRay(position, direction * 3);
 
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, chaseRange);
+        Gizmos.DrawWireSphere(position, chaseRange);
     }
 
     public override void TakeDamage(int damage)
@@ -101,7 +108,7 @@ public class MobController : Entity
         foreach (var mob in mobList)
             avoidVector += RunAway(mob.position) / 10f;
 
-        return avoidVector.normalized;
+        return avoidVector.normalized * Time.deltaTime;
     }
 
     /// <summary>
@@ -122,7 +129,7 @@ public class MobController : Entity
             if (movingTowards.magnitude > 0)
                 separateVector += movingTowards.normalized / movingTowards.magnitude;
         }
-        return separateVector.normalized;
+        return separateVector.normalized * Time.deltaTime;
     }
 
     public Vector2 RunAway(Vector2 target)
@@ -140,21 +147,16 @@ public class MobController : Entity
         for (int i = 0; i < mobs.Count; i++)
         {
             var currentMob = mobs[i];
-            float sqrDistance = (currentMob.position - position).sqrMagnitude;
+            float distance = Vector2.Distance(position, currentMob.position);
 
-            if (sqrDistance > range * range)
+            if (distance > range)
                 continue;
 
-            if(closestMob != null)
-            {
-                if (sqrDistance < Vector2.Distance(position, closestMob.position))
-                {
-                    closestMob = currentMob;
-                    continue;
-                }
-            }
+            if (closestMob == null)
+                closestMob = currentMob;
+            else if (Vector2.Distance(position, currentMob.position) < Vector2.Distance(position, closestMob.position))
+                closestMob = currentMob;
 
-            closestMob = currentMob;
         }
         return closestMob;
     }
@@ -176,5 +178,9 @@ public class MobController : Entity
         //TO ROBI GARBAGE COLLECTION ZMIENIC NA TOTALNIE COS INNEGO
         //to tez zalezy gdzie bedzie to uzywane bo musialo by to wspolgrac z klasa w ktorej jest czyli tylko w przypadku mobControllera to zadziala zeby tu dac liste mobow w zasiegu i do niej to dodawac zamiast wyrzucac tablice z metody
         return inRangeMobs;
+    }
+    public static float GetDistanceOfClosestMob(Vector2 position)
+    {
+        return Vector2.Distance(position, GetClosestMob(position, 1000f).position);
     }
 }

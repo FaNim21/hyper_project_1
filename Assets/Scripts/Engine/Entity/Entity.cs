@@ -5,7 +5,7 @@ public abstract class Entity : MonoBehaviour
     [ReadOnly] public float health;
     public int maxHealth;
 
-    public new Transform transform;
+    [HideInInspector] public new Transform transform;
     public Vector2 position;
 
     public virtual void Awake()
