@@ -1,25 +1,15 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Item")]
-public class Item : ScriptableObject
+public class Item : MonoBehaviour
 {
-
-    #region Singleton
-
-    public static Item instance;
-
-    public void Awake()
-    {
-        instance = this;
-    }
-
-    #endregion
+    public static Item item { get; private set; }
 
     public string name = "New Item";
     public string desc = "New description";
     public Sprite icon = null;
     public float worth;
     public float weight;
+    public int stacksize;
     public ItemType type;
 
     public enum ItemType

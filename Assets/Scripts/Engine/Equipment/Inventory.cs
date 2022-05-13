@@ -4,16 +4,8 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    #region Singleton
 
-    public static Inventory instance;
-
-    public void Awake()
-    {
-        instance = this;
-    }
-
-    #endregion
+    public static Inventory instance { get; private set; }
 
     private int space = 50;
     public List<Item> items = new List<Item>();
@@ -31,8 +23,13 @@ public class Inventory : MonoBehaviour
 
     }
 
-   /* public void Drop(Item item)
+    public void Awake()
     {
-        items.Remove(item);
-    }*/
+        instance = this;
+    }
+
+    /* public void Drop(Item item)
+     {
+         items.Remove(item);
+     }*/
 }
