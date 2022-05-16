@@ -1,6 +1,7 @@
 using UnityEngine;
 
-public class Item : MonoBehaviour
+[CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Item")]
+public class Item : ScriptableObject
 {
     public static Item item { get; private set; }
 

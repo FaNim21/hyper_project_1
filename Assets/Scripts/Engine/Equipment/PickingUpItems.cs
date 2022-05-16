@@ -7,13 +7,13 @@ public class PickingUpItems : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.tag == "Player")
+        if (collision.tag == "Player") // Gdy nastepuje kolizja z graczem, ktory jest otagowany jako "Player"
         {
             Debug.Log(item.name + " picked");
-            bool isPickedUp = Inventory.instance.Add(item);
+            bool isPickedUp = Inventory.instance.Add(item); // Dodaje dotkniety przedmiot do ekwipunku (w kodzie)
             if (isPickedUp)
             {
-                Destroy(gameObject);
+                Destroy(gameObject); // Przedmiot, ktorego dotyka gracz jest niszczony (znika)
             }
         }
     }
