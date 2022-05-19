@@ -26,9 +26,14 @@ public class PlayerController : Entity
     public float speed;
     public float sprintSpeed;
     public float projectileSpeed;
+    public float dashCooldown;
+    public float dashForce;
+
+    private float _dashTimer;
 
     [Header("Debug")]
     [ReadOnly] public bool isInvulnerable;
+    [ReadOnly] public bool isDashing;
     [ReadOnly] public float currentSpeed;
     [ReadOnly] public float aimAngle;
     [ReadOnly] public Vector2 inputDirection;
@@ -63,7 +68,7 @@ public class PlayerController : Entity
 
         base.Update();
 
-        Debug.Log(MobController.GetDistanceOfClosestMob(position));
+        //Debug.Log(MobController.GetDistanceOfClosestMob(position));
 
         mousePosition = Utils.GetMouseWorldPosition();
         aimDirection = (mousePosition - (Vector2)transform.position).normalized;
@@ -79,7 +84,15 @@ public class PlayerController : Entity
     /// </summary>
     public override void FixedUpdate()
     {
-        rb.MovePosition(rb.position + currentSpeed * Time.deltaTime * inputDirection);
+        //logika dasha
+        if (isDashing)
+        {
+            //jezeli timer jest mniejszy od cooldownu to rb.MovePosition(tu cala fizyka)
+            //a jezeli timer przekroczy cooldown to zerujemy timer i dajemy is dashing na false
+        }
+
+        if (!isDashing)
+            rb.MovePosition(rb.position + currentSpeed * Time.deltaTime * inputDirection);
     }
 
     /// <summary>
@@ -103,6 +116,8 @@ public class PlayerController : Entity
             currentSpeed = Mathf.Lerp(currentSpeed, sprintSpeed, _lerpBetweenSpeed * Time.deltaTime);
         else
             currentSpeed = Mathf.Lerp(currentSpeed, speed, _lerpBetweenSpeed * Time.deltaTime);
+
+        //klikniemy spacje to uruchamia nam dash
     }
 
     /// <summary>

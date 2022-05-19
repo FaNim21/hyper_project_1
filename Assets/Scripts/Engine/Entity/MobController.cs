@@ -106,8 +106,9 @@ public class MobController : Entity
         if (mobList.Count == 0 || mobList == null) return avoidVector;
 
         foreach (var mob in mobList)
-            avoidVector += RunAway(mob.position) / 10f;
+            avoidVector += RunAway(mob.position);
 
+        Debug.Log(avoidVector);
         return avoidVector.normalized * Time.deltaTime;
     }
 

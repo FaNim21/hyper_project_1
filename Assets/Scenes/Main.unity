@@ -6033,7 +6033,103 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  m_AnimatedTiles: {}
+  m_AnimatedTiles:
+  - first: {x: 30, y: 2, z: 0}
+    second:
+      m_AnimatedSprites:
+      - {fileID: 964773389, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      - {fileID: 673192677, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      - {fileID: -463740317, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      - {fileID: 977294675, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      - {fileID: -463740317, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      - {fileID: 673192677, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      m_AnimationSpeed: 2
+      m_AnimationTimeOffset: 0
+      m_IsLooping: 1
+  - first: {x: 31, y: 2, z: 0}
+    second:
+      m_AnimatedSprites:
+      - {fileID: 964773389, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      - {fileID: 673192677, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      - {fileID: -463740317, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      - {fileID: 977294675, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      - {fileID: -463740317, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      - {fileID: 673192677, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      m_AnimationSpeed: 2
+      m_AnimationTimeOffset: 0
+      m_IsLooping: 1
+  - first: {x: 29, y: 3, z: 0}
+    second:
+      m_AnimatedSprites:
+      - {fileID: 460622354, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      - {fileID: 728914092, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      - {fileID: 2090745195, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      - {fileID: 836969800, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      - {fileID: 2090745195, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      - {fileID: 728914092, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      m_AnimationSpeed: 2
+      m_AnimationTimeOffset: 0
+      m_IsLooping: 1
+  - first: {x: 32, y: 3, z: 0}
+    second:
+      m_AnimatedSprites:
+      - {fileID: -383687867, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      - {fileID: 496457809, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      - {fileID: -1155551508, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      - {fileID: -1333819315, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      - {fileID: -1155551508, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      - {fileID: 496457809, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      m_AnimationSpeed: 2
+      m_AnimationTimeOffset: 0
+      m_IsLooping: 1
+  - first: {x: 29, y: 4, z: 0}
+    second:
+      m_AnimatedSprites:
+      - {fileID: 460622354, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      - {fileID: 728914092, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      - {fileID: 2090745195, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      - {fileID: 836969800, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      - {fileID: 2090745195, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      - {fileID: 728914092, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      m_AnimationSpeed: 2
+      m_AnimationTimeOffset: 0
+      m_IsLooping: 1
+  - first: {x: 32, y: 4, z: 0}
+    second:
+      m_AnimatedSprites:
+      - {fileID: -383687867, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      - {fileID: 496457809, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      - {fileID: -1155551508, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      - {fileID: -1333819315, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      - {fileID: -1155551508, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      - {fileID: 496457809, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      m_AnimationSpeed: 2
+      m_AnimationTimeOffset: 0
+      m_IsLooping: 1
+  - first: {x: 30, y: 5, z: 0}
+    second:
+      m_AnimatedSprites:
+      - {fileID: -1815703898, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      - {fileID: 1783765752, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      - {fileID: -1942284112, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      - {fileID: 735580893, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      - {fileID: -1942284112, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      - {fileID: 1783765752, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      m_AnimationSpeed: 2
+      m_AnimationTimeOffset: 0
+      m_IsLooping: 1
+  - first: {x: 31, y: 5, z: 0}
+    second:
+      m_AnimatedSprites:
+      - {fileID: -1815703898, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      - {fileID: 1783765752, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      - {fileID: -1942284112, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      - {fileID: 735580893, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      - {fileID: -1942284112, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      - {fileID: 1783765752, guid: d19830ea0c6679f48856da056a9665d5, type: 3}
+      m_AnimationSpeed: 2
+      m_AnimationTimeOffset: 0
+      m_IsLooping: 1
   m_TileAssetArray:
   - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: c42034f27332ecf4ab7001deffa0030d, type: 2}
@@ -6417,6 +6513,7 @@ MonoBehaviour:
   damage: 30
   projectileSpeed: 10
   shootingCooldown: 0.5
+  isGizmosEnabled: 0
   isShooting: 0
   direction: {x: 0, y: 0}
   toTargetAngle: 0
@@ -6498,6 +6595,7 @@ MonoBehaviour:
   damage: 30
   projectileSpeed: 10
   shootingCooldown: 0.5
+  isGizmosEnabled: 0
   isShooting: 0
   direction: {x: 0, y: 0}
   toTargetAngle: 0
@@ -6579,6 +6677,7 @@ MonoBehaviour:
   damage: 8
   projectileSpeed: 5
   shootingCooldown: 0.1
+  isGizmosEnabled: 0
   isShooting: 0
   direction: {x: 0, y: 0}
   toTargetAngle: 0
@@ -8265,6 +8364,7 @@ MonoBehaviour:
   damage: 30
   projectileSpeed: 10
   shootingCooldown: 0.5
+  isGizmosEnabled: 0
   isShooting: 0
   direction: {x: 0, y: 0}
   toTargetAngle: 0
@@ -8346,6 +8446,7 @@ MonoBehaviour:
   damage: 8
   projectileSpeed: 5
   shootingCooldown: 0.1
+  isGizmosEnabled: 0
   isShooting: 0
   direction: {x: 0, y: 0}
   toTargetAngle: 0
@@ -8427,6 +8528,7 @@ MonoBehaviour:
   damage: 30
   projectileSpeed: 10
   shootingCooldown: 0.5
+  isGizmosEnabled: 0
   isShooting: 0
   direction: {x: 0, y: 0}
   toTargetAngle: 0
@@ -8703,6 +8805,7 @@ MonoBehaviour:
   damage: 8
   projectileSpeed: 5
   shootingCooldown: 0.1
+  isGizmosEnabled: 0
   isShooting: 0
   direction: {x: 0, y: 0}
   toTargetAngle: 0
@@ -9030,6 +9133,7 @@ MonoBehaviour:
   damage: 8
   projectileSpeed: 5
   shootingCooldown: 0.1
+  isGizmosEnabled: 0
   isShooting: 0
   direction: {x: 0, y: 0}
   toTargetAngle: 0
@@ -9311,7 +9415,10 @@ MonoBehaviour:
   speed: 4
   sprintSpeed: 8
   projectileSpeed: 5
+  dashCooldown: 0.5
+  dashForce: 20
   isInvulnerable: 0
+  isDashing: 0
   currentSpeed: 0
   aimAngle: 0
   inputDirection: {x: 0, y: 0}
@@ -10065,6 +10172,7 @@ MonoBehaviour:
   damage: 30
   projectileSpeed: 10
   shootingCooldown: 0.5
+  isGizmosEnabled: 0
   isShooting: 0
   direction: {x: 0, y: 0}
   toTargetAngle: 0
@@ -10835,6 +10943,7 @@ MonoBehaviour:
   damage: 8
   projectileSpeed: 5
   shootingCooldown: 0.1
+  isGizmosEnabled: 0
   isShooting: 0
   direction: {x: 0, y: 0}
   toTargetAngle: 0
@@ -10916,6 +11025,7 @@ MonoBehaviour:
   damage: 8
   projectileSpeed: 5
   shootingCooldown: 0.1
+  isGizmosEnabled: 0
   isShooting: 0
   direction: {x: 0, y: 0}
   toTargetAngle: 0
