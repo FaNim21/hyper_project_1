@@ -5,29 +5,39 @@ public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler
 {
     [SerializeField] private Canvas canvas;
     private RectTransform rectTransform;
+    private CanvasGroup canvasGroup;
 
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>(); // RectTransform przetrzymuje i manipuluje wartosciami pozycji, rozmiaru i zakotwiczenia dla prostokatu
+        canvasGroup = GetComponent<CanvasGroup>(); // Canvasgroup - atrybut dla itemÃ³w - pozwala na utworzenie z niego obiektu ,,interaktywnego'', pozwala na zmiane przezroczystosci i zmiane atrybutu ,,block raycast''
     }
 
-    public void OnBeginDrag(PointerEventData eventData) // Interface wzywany zanim rozpocznie siê przesuwanie przedmiotu
+    public void OnBeginDrag(PointerEventData eventData) // Interface wzywany zanim rozpocznie sie przesuwanie przedmiotu
     {
-        Debug.Log("DragBegin");
+        Debug.Log("OnBeginDrag");
+        canvasGroup.alpha = .6f; // zwiÄ™ksza poziom przezroczystoÅ›ci, gdy Å‚apiemy za przedmiot
+        canvasGroup.blocksRaycasts = false;
+
     }
 
-    public void OnDrag(PointerEventData eventData) // Interface wzywany za ka¿dym razem gdy przedmiot jest przesuwany (w trakcie ruszania kursorem)
+    public void OnDrag(PointerEventData eventData) // Interface wzywany za kazdym razem gdy przedmiot jest przesuwany (w trakcie ruszania kursorem)
     {
-        rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        Debug.Log("OnDrag");
+        rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor; // przesuwanie itemem, skalowane wraz z canvasem
     }
 
-    public void OnEndDrag(PointerEventData eventData) // Interface wzywany gdy koñczymy przesuwaæ przedmiot
+    public void OnEndDrag(PointerEventData eventData) // Interface wzywany gdy konczymy przesuwac przedmiot
     {
-        Debug.Log("DragEnd");
+        Debug.Log("OnDragEnd");
+        canvasGroup.alpha = 1f; // na koniec Å‚apania powrÃ³t do normalnego poziomu przezroczystosci
+        canvasGroup.blocksRaycasts = true;
     }
 
-    public void OnPointerDown(PointerEventData eventData) // Interface wzywany gdy wykrywa klikniêcie myszki na przedmiot
+    public void OnPointerDown(PointerEventData eventData) // Interface wzywany gdy wykrywa klikniecie myszki na przedmiot
     {
-        Debug.Log("Point");
+        Debug.Log("OnPointer");
     }
+    
+
 }

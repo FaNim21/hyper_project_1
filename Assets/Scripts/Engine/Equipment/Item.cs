@@ -3,11 +3,15 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Item")]
 public class Item : ScriptableObject
 {
-    public static Item item { get; private set; }
+    public static Item item
+    {
+        get; 
+        private set;
+    }
 
-    public string name = "New Item";
-    public string desc = "New description";
     public Sprite icon = null;
+    public string item_name = "Nowy przedmiot";
+    public string desc = "Opis przedmiotu";
     public float worth;
     public float weight;
     public int stacksize;
@@ -19,6 +23,8 @@ public class Item : ScriptableObject
         weapon,
         armor,
         potion,
-        food
+        food,
+        alcohol,
+        money
     }
 }

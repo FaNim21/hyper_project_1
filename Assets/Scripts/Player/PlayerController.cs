@@ -120,7 +120,7 @@ public class PlayerController : Entity
     }
 
     /// <summary>
-    /// Najprostszy sposob strzelania projetile na range jako jako Instatiate projectile prefab ktory znajduje sie w Game managerze i nadawanie mu odrazu wartosci do dzialania
+    /// Najprostszy sposob strzelania projectile na range jako jako Instatiate projectile prefab ktory znajduje sie w Game managerze i nadawanie mu odrazu wartosci do dzialania
     /// </summary>
     private void Shoot()
     {
