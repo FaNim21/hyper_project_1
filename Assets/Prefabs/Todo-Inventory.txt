@@ -1,4 +1,4 @@
-----------------TO DO----------------
+----------------TO DO------------------
 
 0. dodanie do grafiki inventory systemu poziomu
 1. zbieranie przedmiotow i wrzucanie ich automatycznie do quickbara
