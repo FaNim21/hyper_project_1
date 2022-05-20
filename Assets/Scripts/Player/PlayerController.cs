@@ -12,6 +12,7 @@ public class PlayerController : Entity
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator animator;
     [SerializeField] private CanvasHandle canvasHandle;
+    [SerializeField] private Inventory inventory;
 
     [Header("Obiekty")]
     public GameObject Phone;
@@ -149,5 +150,21 @@ public class PlayerController : Entity
     public void Respawn()
     {
         health = maxHealth;
+    }
+
+   
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        DragAndDrop draganddrop = collision.GetComponent<DragAndDrop>();
+        if (draganddrop != null) 
+        {
+            Debug.Log(draganddrop.name + " picked");
+            bool isPickedUp = inventory.Add(draganddrop.item); // Dodaje dotkniety przedmiot do ekwipunku (w kodzie)
+
+            if (isPickedUp)
+            {
+                Destroy(draganddrop.gameObject); // Przedmiot, ktorego dotyka gracz jest niszczony (znika)
+            }
+        }
     }
 }

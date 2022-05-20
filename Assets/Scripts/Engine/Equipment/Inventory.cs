@@ -5,8 +5,6 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
 
-    public static Inventory instance { get; private set; } // Dzieki temu singletonowi mozemy sie odwolac do instancji ekwipunku poza jego klasa
-
     private int space = 50; // Pojemnoœæ naszego ekwipunku
     public List<Item> items = new List<Item>(); // Lista itemow znajdujacych sie aktualnie w naszym ekwipunku
 
@@ -23,10 +21,6 @@ public class Inventory : MonoBehaviour
 
     }
 
-    public void Awake()
-    {
-        instance = this;
-    }
 
     /* public void Drop(Item item)
      {
