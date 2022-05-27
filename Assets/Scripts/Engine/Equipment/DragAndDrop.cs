@@ -19,7 +19,6 @@ public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler
         Debug.Log("OnBeginDrag");
         canvasGroup.alpha = .6f; // zwiększa poziom przezroczystości, gdy łapiemy za przedmiot
         canvasGroup.blocksRaycasts = false;
-
     }
 
     public void OnDrag(PointerEventData eventData) // Interface wzywany za kazdym razem gdy przedmiot jest przesuwany (w trakcie ruszania kursorem)

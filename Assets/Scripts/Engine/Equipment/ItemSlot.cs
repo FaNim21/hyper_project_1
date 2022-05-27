@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class ItemSlot : MonoBehaviour, IDropHandler
 {
-    public void OnDrop(PointerEventData eventData) // Wykorzystanie interfejsu - upuszczenie przedmiotu w slocie
+    public virtual void OnDrop(PointerEventData eventData) // Wykorzystanie interfejsu - upuszczenie przedmiotu w slocie
     {
         if (eventData.pointerDrag == null) return;
         Debug.Log("OnDrop");

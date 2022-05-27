@@ -1,6 +1,6 @@
 ----------------TO DO----------------
 
-0. dodanie do grafiki inventory systemu poziomu
+0. 2 listy na itemy - dla quick slota i dla ekwipunku
 1. zbieranie przedmiotow i wrzucanie ich automatycznie do quickbara
 2. system stackowania
 3. system wag i udŸwigu
@@ -8,8 +8,21 @@
 5. Podzieliæ inventory na grafiki
 6. mo¿liwoœæ swapowania pomiêdzy itemami
 7. mo¿liwoœæ wyrzucania itemów z EQ na ziemiê (poza slot)
-
-
-
+8. item na item.data (playercontroller)
+9. podnoszenie itemów (z ziemii) --> brak drag'dropa
 X.zrzucanie z plecaka itemów do ekwipunku
 X.uzywanie itemow z quickbara 
+
+wyrzucenie itemu ze slotu w nieodpowiednie miejsce (i powrót do slotu)
+przyjmowanie itemu do slotu (LOGIKA)
+co zrobic jak przesuwamy item na slot, ktory juz jest zajety -
+(nastepuje swap, a przedmiot poprzedni wyrzucany na ziemie??)
+
+swapowanie przedmiotow w slocie
+opcja stackowania (item na ten sam item)
+
+instancja drag n' dropa dla itemslotu
+
+0. dodanie do grafiki inventory systemu poziomu
+add przez inventory -> tworzenie obiektu prefab (widoczny, ze dodal sie do ewkipunku) (instancja prefaba)
+
