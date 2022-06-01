@@ -1,28 +1,33 @@
 ----------------TO DO------------------
 
-0. 2 listy na itemy - dla quick slota i dla ekwipunku
-1. zbieranie przedmiotow i wrzucanie ich automatycznie do quickbara
-2. system stackowania
-3. system wag i udŸwigu
-4. cyfra przy stackowaniu
-5. Podzieliæ inventory na grafiki
-6. mo¿liwoœæ swapowania pomiêdzy itemami
-7. mo¿liwoœæ wyrzucania itemów z EQ na ziemiê (poza slot)
-8. item na item.data (playercontroller)
-9. podnoszenie itemów (z ziemii) --> brak drag'dropa
-X.zrzucanie z plecaka itemów do ekwipunku
-X.uzywanie itemow z quickbara 
+Ogólnie dla zespo³u:
 
-wyrzucenie itemu ze slotu w nieodpowiednie miejsce (i powrót do slotu)
-przyjmowanie itemu do slotu (LOGIKA)
-co zrobic jak przesuwamy item na slot, ktory juz jest zajety -
-(nastepuje swap, a przedmiot poprzedni wyrzucany na ziemie??)
+1. Item na item.data (Inventory)
+2. Przyjmowanie itemu do slotu (LOGIKA)
+3. Zbieranie przedmiotow i wrzucanie ich automatycznie do quickbara
+4. Instancja drag n' dropa dla itemslotu
+5. 2 listy na itemy - dla quick slota i dla ekwipunku
+6. add przez inventory -> tworzenie obiektu prefab (widoczny, ze dodal sie do ewkipunku) (instancja prefaba)
+7. Mo¿liwoœæ wyrzucania itemów z EQ na ziemiê (poza slot)
+8. Mo¿liwoœæ swapowania pomiêdzy itemami w slocie
+9. Upuszczenie itemu w nieodpowiednim miejscu (Konsekwencja: powrót do slotu pierwotnego)
+10. Uzywanie itemow z quickbara (Bez zmiany statystyk, bo jeszcze nie s¹ gotowe)
+11. System stackowania (item na ten sam item)
+12. Cyfra przy stackowaniu
+13. System wag i udŸwigu
+14. Zak³adanie itemów na sloty postaci (Broñ, Zbroja itp.)
+15. Przemyœlenie dzia³ania statystyk
+16. Zaimplementowanie systemu statystyk
+17. U¿ywanie itemów (Wp³yw na statystyki)
 
-swapowanie przedmiotow w slocie
-opcja stackowania (item na ten sam item)
+Igor:
 
-instancja drag n' dropa dla itemslotu
+1. Dodanie do grafiki inventory systemu poziomu
+2. Podzieliæ inventory na grafiki
 
-0. dodanie do grafiki inventory systemu poziomu
-add przez inventory -> tworzenie obiektu prefab (widoczny, ze dodal sie do ewkipunku) (instancja prefaba)
+
+
+
+
+
 

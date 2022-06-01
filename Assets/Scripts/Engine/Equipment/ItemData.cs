@@ -22,9 +22,6 @@ public class ItemData : ScriptableObject
         item,
         weapon,
         armor,
-        potion,
         food,
-        alcohol,
-        money
     }
 }

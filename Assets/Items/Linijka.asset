@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b1a8809f958843f4e9ed116137acafb6, type: 3}
-  m_Name: Bron
+  m_Name: Linijka
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 2a9e3342f408c3e44acac6530b9a2f33, type: 3}
-  item_name: Bron1
+  item_name: Linijka
   desc: Ostra jak brzytwa
   worth: 34
   weight: 6

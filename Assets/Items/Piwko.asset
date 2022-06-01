@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1a8809f958843f4e9ed116137acafb6, type: 3}
   m_Name: Piwko
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: f44da315eab3af44caefef732f7a6b7c, type: 3}
-  item_name: Piwo 1
-  desc: Pyszne
+  icon: {fileID: 21300000, guid: 3d605405b6471e446aca6b53ab52b395, type: 3}
+  item_name: Piwko 1
+  desc: Smaczne
   worth: 0
   weight: 0
-  stacksize: 0
-  type: 4
+  stacksize: 5
+  type: 0
