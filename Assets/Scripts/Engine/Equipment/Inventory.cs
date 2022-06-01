@@ -24,7 +24,7 @@ public class Inventory : MonoBehaviour
     {
         for (int i = 0; i < items.Count; i++)
         {
-            items[i].icon = items[i]
+            //items[i].icon = items[i].GetComponent<SpriteRenderer>().sprite; czemu nie dziala???
         }
 
 
