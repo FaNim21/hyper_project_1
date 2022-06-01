@@ -23,5 +23,6 @@ public class ItemData : ScriptableObject
         weapon,
         armor,
         food,
+        money
     }
 }

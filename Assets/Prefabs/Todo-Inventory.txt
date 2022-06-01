@@ -2,9 +2,8 @@
 
 Ogólnie dla zespo³u:
 
-1. Item na item.data (Inventory)
+1. Item na item.data (Inventory) *DONE*
 2. Przyjmowanie itemu do slotu (LOGIKA)
-3. Zbieranie przedmiotow i wrzucanie ich automatycznie do quickbara
 4. Instancja drag n' dropa dla itemslotu
 5. 2 listy na itemy - dla quick slota i dla ekwipunku
 6. add przez inventory -> tworzenie obiektu prefab (widoczny, ze dodal sie do ewkipunku) (instancja prefaba)

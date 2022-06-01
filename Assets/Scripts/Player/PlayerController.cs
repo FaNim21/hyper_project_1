@@ -158,7 +158,7 @@ public class PlayerController : Entity
         if (item != null) 
         {
             Debug.Log(item.data.name + " picked");
-            bool isPickedUp = inventory.Add(item); // Dodaje dotkniety przedmiot do ekwipunku (w kodzie)
+            bool isPickedUp = inventory.Add(item.data); // Dodaje dotkniety przedmiot do ekwipunku (w kodzie)
             
             if (isPickedUp)
             {
