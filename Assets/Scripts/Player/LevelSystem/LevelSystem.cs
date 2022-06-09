@@ -26,7 +26,7 @@ public class LevelSystem : MonoBehaviour
         {
             Level++;
             CurrentExp -= ExpToNextLevel;
-            ExpToNextLevel += Mathf.RoundToInt(ExpToNextLevel * 0.23f); // * 0.66 * 
+            ExpToNextLevel += Mathf.RoundToInt(ExpToNextLevel * 0.23f); 
         }
         //update hud
     }
