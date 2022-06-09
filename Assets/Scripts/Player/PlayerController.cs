@@ -25,11 +25,13 @@ public class PlayerController : Entity
     [Header("G³ówne wartoœci")]
     public float speed;
     public float sprintSpeed;
-    public float projectileSpeed;
-    public float dashCooldown;
     public float dashForce;
+    public float dashTime;
+    public float dashCooldown;
+    public float projectileSpeed;
 
     private float _dashTimer;
+    private float _dashCooldownTimer;
 
     [Header("Debug")]
     [ReadOnly] public bool isInvulnerable;
@@ -76,6 +78,9 @@ public class PlayerController : Entity
 
         if (Input.GetMouseButtonDown(0) && !canvasHandle.isCanvasEnabled && !EventSystem.current.IsPointerOverGameObject()) Shoot();
 
+        if (_dashCooldownTimer >= 0)
+            _dashCooldownTimer -= Time.deltaTime;
+
         if (health <= 0f) Respawn();
     }
 
@@ -84,11 +89,20 @@ public class PlayerController : Entity
     /// </summary>
     public override void FixedUpdate()
     {
-        //logika dasha
         if (isDashing)
         {
-            //jezeli timer jest mniejszy od cooldownu to rb.MovePosition(tu cala fizyka)
-            //a jezeli timer przekroczy cooldown to zerujemy timer i dajemy is dashing na false
+            _dashTimer += Time.deltaTime;
+
+            if (_dashTimer <= dashTime)
+            {
+                rb.MovePosition(rb.position + dashForce * Time.deltaTime * inputDirection);
+            }
+            else
+            {
+                _dashTimer = 0f;
+                isDashing = false;
+                _dashCooldownTimer = dashCooldown;
+            }
         }
 
         if (!isDashing)
@@ -117,7 +131,8 @@ public class PlayerController : Entity
         else
             currentSpeed = Mathf.Lerp(currentSpeed, speed, _lerpBetweenSpeed * Time.deltaTime);
 
-        //klikniemy spacje to uruchamia nam dash
+        if (Input.GetKeyDown(KeyCode.Space) && _dashCooldownTimer <= 0)
+            isDashing = true;
     }
 
     /// <summary>
