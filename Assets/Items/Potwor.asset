@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1a8809f958843f4e9ed116137acafb6, type: 3}
   m_Name: Potwor
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 36e52def6d14e0e47be55680a00906e9, type: 3}
+  sprite: {fileID: 21300000, guid: 36e52def6d14e0e47be55680a00906e9, type: 3}
   item_name: Potwor 1
   desc: Kopie jak skurwysyn
   worth: 120

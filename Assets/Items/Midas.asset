@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1a8809f958843f4e9ed116137acafb6, type: 3}
   m_Name: Midas
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 5a5d1ea9522adc849b13f41ee877a7ab, type: 3}
+  sprite: {fileID: 21300000, guid: 5a5d1ea9522adc849b13f41ee877a7ab, type: 3}
   item_name: Midas 1
   desc: Wszystko czego tylko dotkne...
   worth: 500

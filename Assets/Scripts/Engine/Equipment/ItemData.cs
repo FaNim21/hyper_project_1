@@ -9,7 +9,7 @@ public class ItemData : ScriptableObject
         private set;
     }
 
-    public Sprite icon = null;
+    public Sprite sprite;
     public string item_name = "Nowy przedmiot";
     public string desc = "Opis przedmiotu";
     public float worth;

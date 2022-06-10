@@ -16,17 +16,6 @@ public class Inventory : MonoBehaviour
         }
         //dodanie itemu do slotu 
         items.Add(item);
-        PickUp();
         return true;
-    }
-
-    void PickUp()
-    {
-        for (int i = 0; i < items.Count; i++)
-        {
-            //items[i].icon = items[i].GetComponent<SpriteRenderer>().sprite; czemu nie dziala???
-        }
-
-
     }
 }
