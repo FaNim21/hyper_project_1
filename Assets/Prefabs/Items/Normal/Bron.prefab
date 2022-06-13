@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6000885619056201120}
   - component: {fileID: 6000885619056201121}
   - component: {fileID: 6000885619056201124}
-  - component: {fileID: 6000885619056201118}
+  - component: {fileID: 6297053750514367502}
   m_Layer: 5
   m_Name: Bron
   m_TagString: Untagged
@@ -139,7 +139,7 @@ Canvas:
   m_SortingLayerID: 875451871
   m_SortingOrder: 4
   m_TargetDisplay: 0
---- !u!114 &6000885619056201118
+--- !u!114 &6297053750514367502
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -148,7 +148,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 6000885619056201125}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee3a2a1cc5f7ad948a5ebbe38c412e8a, type: 3}
+  m_Script: {fileID: 11500000, guid: 4736111fd87da79478ca7d31e4ad420a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 0cc94c538198dc340be09ccab5e76ce4, type: 2}
+  PickUpRadius: 0.3
+  ItemData: {fileID: 11400000, guid: 0cc94c538198dc340be09ccab5e76ce4, type: 2}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1469105666749132972}
   - component: {fileID: 1469105666749132971}
   - component: {fileID: 1469105666749132968}
-  - component: {fileID: 1469105666749132974}
+  - component: {fileID: -4217884728131319399}
   m_Layer: 5
   m_Name: Piwko
   m_TagString: Untagged
@@ -139,7 +139,7 @@ Canvas:
   m_SortingLayerID: 875451871
   m_SortingOrder: 4
   m_TargetDisplay: 0
---- !u!114 &1469105666749132974
+--- !u!114 &-4217884728131319399
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -148,7 +148,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1469105666749132951}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee3a2a1cc5f7ad948a5ebbe38c412e8a, type: 3}
+  m_Script: {fileID: 11500000, guid: 4736111fd87da79478ca7d31e4ad420a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 31ae4037d5a530c4d976b4828733644d, type: 2}
+  PickUpRadius: 0.3
+  ItemData: {fileID: 11400000, guid: 31ae4037d5a530c4d976b4828733644d, type: 2}

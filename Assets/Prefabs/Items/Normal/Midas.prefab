@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6935728377549723104}
   - component: {fileID: 6935728377549723107}
-  - component: {fileID: 6935728377549723106}
   - component: {fileID: 6935728377549723105}
+  - component: {fileID: 6806256301688571525}
   m_Layer: 0
   m_Name: Midas
   m_TagString: Untagged
@@ -86,19 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6935728377549723106
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6935728377549723109}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee3a2a1cc5f7ad948a5ebbe38c412e8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 612e31bd4fa1dc5499029361fc5781c3, type: 2}
 --- !u!61 &6935728377549723105
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -125,3 +112,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &6806256301688571525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6935728377549723109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4736111fd87da79478ca7d31e4ad420a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PickUpRadius: 0.3
+  ItemData: {fileID: 11400000, guid: 612e31bd4fa1dc5499029361fc5781c3, type: 2}

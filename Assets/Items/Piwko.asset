@@ -9,13 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1a8809f958843f4e9ed116137acafb6, type: 3}
+  m_Script: {fileID: 11500000, guid: 6f245f4f3fa16094c873eefea92877f9, type: 3}
   m_Name: Piwko
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 3d605405b6471e446aca6b53ab52b395, type: 3}
-  item_name: Piwko 1
-  desc: Smaczne
-  worth: 0
-  weight: 0
-  stacksize: 5
-  type: 0
+  ID: 3
+  Name: Piwo1
+  Description: OPIS_piwko1
+  Icon: {fileID: 0}
+  MaxStackSize: 5

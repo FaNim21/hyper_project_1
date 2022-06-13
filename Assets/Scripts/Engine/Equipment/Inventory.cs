@@ -1,21 +1,62 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using System.Linq;
 
-public class Inventory : MonoBehaviour
+[System.Serializable]
+public class Inventory
 {
-    private int space = 50; // Pojemnoœæ naszego ekwipunku
-    public List<ItemData> items = new List<ItemData>(); // Lista itemow znajdujacych sie aktualnie w naszym ekwipunku
+    [SerializeField] private List<InventorySlot> inventorySlots;
 
-    public bool Add(ItemData item) // Dodawanie itemow do eq
+    public List<InventorySlot> InventorySlots => inventorySlots;
+    public int InventorySize => inventorySlots.Count;
+
+    public UnityAction<InventorySlot> OnInventorySlotChanged;
+
+    public Inventory(int size)
     {
-        if (items.Count >= space) // Jesli ilosc itemow jest wieksza niz ilosc miejsca w eq to item nie zostanie podniesiony
+        inventorySlots = new List<InventorySlot>(size);
+
+        for (int i = 0; i < size; i++)
         {
-            Debug.Log("There is not enough space in equipment");
-            return false;
+            inventorySlots.Add(new InventorySlot());
         }
-        //dodanie itemu do slotu 
-        items.Add(item);
-        return true;
+    }
+    public bool AddToInventory(ItemData itemToAdd, int amountToAdd)
+    {
+        if (ContainsItem(itemToAdd, out List<InventorySlot> invSlot)) //Sprawdza czy item istnieje w ekwipunku
+        {
+            foreach (var slot in invSlot)
+            {
+                if (slot.RoomLeftInStack(amountToAdd))
+                {
+                    slot.AddToStack(amountToAdd);
+                    OnInventorySlotChanged?.Invoke(slot);
+                    return true;
+                }
+            }
+        }
+
+        if (HasFreeSlot(out InventorySlot freeSlot)) // Wybiera pierwszy wolny slot
+        {
+            freeSlot.UpdateInventorySlot(itemToAdd, amountToAdd);
+            OnInventorySlotChanged?.Invoke(freeSlot);
+            return true;
+        }
+        return false;
+    }
+
+    public bool ContainsItem(ItemData itemToAdd, out List<InventorySlot> invSlot)
+    {
+        invSlot = InventorySlots.Where(i => i.ItemData == itemToAdd).ToList();
+        Debug.Log(invSlot.Count);
+        return invSlot == null ? false: true;
+    }
+
+    public bool HasFreeSlot(out InventorySlot freeSlot)
+    {
+        freeSlot = InventorySlots.FirstOrDefault(i => i.ItemData == null);
+        return freeSlot == null ? false : true;
     }
 }

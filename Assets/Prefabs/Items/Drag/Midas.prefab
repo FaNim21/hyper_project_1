@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2763879765825052184}
   - component: {fileID: 2763879765825052185}
   - component: {fileID: 2763879765825052182}
-  - component: {fileID: 2763879765825052183}
   m_Layer: 0
   m_Name: Midas
   m_TagString: Untagged
@@ -90,17 +89,3 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &2763879765825052183
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2763879765825052181}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4043398dfba44345b0fdea4c2a45718, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
-  item: {fileID: 0}

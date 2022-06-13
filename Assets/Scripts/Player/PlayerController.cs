@@ -152,7 +152,7 @@ public class PlayerController : Entity
         health = maxHealth;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+/*    private void OnTriggerEnter2D(Collider2D collision)
     {
         Item item = collision.GetComponent<Item>();
         if (item != null) 
@@ -165,5 +165,5 @@ public class PlayerController : Entity
                 Destroy(item.gameObject); // Przedmiot, ktorego dotyka gracz jest niszczony (znika)
             }
         }
-    }
+    }*/
 }

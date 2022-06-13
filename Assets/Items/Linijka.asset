@@ -9,13 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1a8809f958843f4e9ed116137acafb6, type: 3}
+  m_Script: {fileID: 11500000, guid: 6f245f4f3fa16094c873eefea92877f9, type: 3}
   m_Name: Linijka
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 2a9e3342f408c3e44acac6530b9a2f33, type: 3}
-  item_name: Linijka
-  desc: Ostra jak brzytwa
-  worth: 34
-  weight: 6
-  stacksize: 1
-  type: 0
+  ID: 1
+  Name: Linijka1
+  Description: OPIS_linijka1
+  Icon: {fileID: 0}
+  MaxStackSize: 5

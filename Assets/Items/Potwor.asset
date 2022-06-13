@@ -9,13 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1a8809f958843f4e9ed116137acafb6, type: 3}
+  m_Script: {fileID: 11500000, guid: 6f245f4f3fa16094c873eefea92877f9, type: 3}
   m_Name: Potwor
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 36e52def6d14e0e47be55680a00906e9, type: 3}
-  item_name: Potwor 1
-  desc: Kopie jak skurwysyn
-  worth: 120
-  weight: 0
-  stacksize: 0
-  type: 3
+  ID: 4
+  Name: Potwor1
+  Description: OPIS_potwor1
+  Icon: {fileID: 0}
+  MaxStackSize: 5
