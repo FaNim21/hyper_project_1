@@ -20,6 +20,7 @@ public class MobController : Entity
     public int damage;
     public float projectileSpeed;
     public float shootingCooldown;
+    public int exp;
 
     [Header("Debug")]
     public bool isGizmosEnabled;
@@ -46,6 +47,7 @@ public class MobController : Entity
 
         if (health <= 0)
         {
+            PlayerController.instance.levelSystem.AddExp(exp);
             mobs.Remove(this);
             Destroy(gameObject);
         }

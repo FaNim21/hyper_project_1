@@ -1,5 +1,6 @@
 using HyperRPG.Engine.Visual;
 using UnityEngine;
+using System.Collections;
 
 public class LevelSystem : MonoBehaviour
 {
@@ -20,15 +21,27 @@ public class LevelSystem : MonoBehaviour
         globalExp += amount;
         CurrentExp += amount;
 
-        /*Popup.Create()*/
+        Popup.Create(transform.position, amount.ToString(), Color.yellow, transform);
 
         while (CurrentExp >= ExpToNextLevel)
         {
-            Level++;
+            StartCoroutine(OnLevelUp()); 
             CurrentExp -= ExpToNextLevel;
             ExpToNextLevel += Mathf.RoundToInt(ExpToNextLevel * 0.23f); 
         }
+
         //update hud
+
+    }
+
+    public IEnumerator OnLevelUp()
+    {
+        Level++;
+        Popup.Create(transform.position, "LEVEL UP!", Color.red, transform, 7);
+        yield return new WaitForSeconds(0.2f);
+        Popup.Create(transform.position, "LEVEL UP!", Color.yellow, transform, 7);
+        yield return new WaitForSeconds(0.2f);
+        Popup.Create(transform.position, "LEVEL UP!", Color.red, transform, 7);
     }
 
 

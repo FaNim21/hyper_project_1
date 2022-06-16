@@ -12,6 +12,7 @@ public class PlayerController : Entity
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator animator;
     [SerializeField] private CanvasHandle canvasHandle;
+    public LevelSystem levelSystem;
 
     [Header("Obiekty")]
     public GameObject Phone;
@@ -186,4 +187,5 @@ public class PlayerController : Entity
     {
         health = maxHealth;
     }
+
 }

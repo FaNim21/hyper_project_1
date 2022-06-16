@@ -6417,6 +6417,7 @@ MonoBehaviour:
   damage: 30
   projectileSpeed: 10
   shootingCooldown: 0.5
+  exp: 100
   isGizmosEnabled: 0
   isShooting: 0
   direction: {x: 0, y: 0}
@@ -6499,6 +6500,7 @@ MonoBehaviour:
   damage: 30
   projectileSpeed: 10
   shootingCooldown: 0.5
+  exp: 100
   isGizmosEnabled: 0
   isShooting: 0
   direction: {x: 0, y: 0}
@@ -6581,6 +6583,7 @@ MonoBehaviour:
   damage: 8
   projectileSpeed: 5
   shootingCooldown: 0.1
+  exp: 100
   isGizmosEnabled: 0
   isShooting: 0
   direction: {x: 0, y: 0}
@@ -8268,6 +8271,7 @@ MonoBehaviour:
   damage: 30
   projectileSpeed: 10
   shootingCooldown: 0.5
+  exp: 100
   isGizmosEnabled: 0
   isShooting: 0
   direction: {x: 0, y: 0}
@@ -8350,6 +8354,7 @@ MonoBehaviour:
   damage: 8
   projectileSpeed: 5
   shootingCooldown: 0.1
+  exp: 100
   isGizmosEnabled: 0
   isShooting: 0
   direction: {x: 0, y: 0}
@@ -8432,6 +8437,7 @@ MonoBehaviour:
   damage: 30
   projectileSpeed: 10
   shootingCooldown: 0.5
+  exp: 100
   isGizmosEnabled: 0
   isShooting: 0
   direction: {x: 0, y: 0}
@@ -8709,6 +8715,7 @@ MonoBehaviour:
   damage: 8
   projectileSpeed: 5
   shootingCooldown: 0.1
+  exp: 100
   isGizmosEnabled: 0
   isShooting: 0
   direction: {x: 0, y: 0}
@@ -9037,6 +9044,7 @@ MonoBehaviour:
   damage: 8
   projectileSpeed: 5
   shootingCooldown: 0.1
+  exp: 100
   isGizmosEnabled: 0
   isShooting: 0
   direction: {x: 0, y: 0}
@@ -9247,6 +9255,7 @@ GameObject:
   - component: {fileID: 1293974418}
   - component: {fileID: 1293974419}
   - component: {fileID: 1293974420}
+  - component: {fileID: 1293974421}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -9311,6 +9320,7 @@ MonoBehaviour:
   rb: {fileID: 1293974419}
   animator: {fileID: 1319243324}
   canvasHandle: {fileID: 318915013}
+  levelSystem: {fileID: 1293974421}
   Phone: {fileID: 1411288342}
   canvas: {fileID: 576421420}
   healthFill: {fileID: 844419810}
@@ -9318,9 +9328,9 @@ MonoBehaviour:
   maxHealthValue: {fileID: 827934457}
   speed: 4
   sprintSpeed: 8
-  dashSpeed: 20
-  dashLength: 0.5
-  dashCooldown: 2
+  dashForce: 20
+  dashTime: 0.2
+  dashCooldown: 0.5
   projectileSpeed: 5
   isInvulnerable: 0
   isDashing: 0
@@ -9329,6 +9339,23 @@ MonoBehaviour:
   inputDirection: {x: 0, y: 0}
   mousePosition: {x: 0, y: 0}
   aimDirection: {x: 0, y: 0}
+--- !u!114 &1293974421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293974417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 398b03d05d53f0d48805588d6d39c558, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1293974420}
+  level: 1
+  currentExp: 0
+  expToNextLevel: 150
+  globalExp: 0
 --- !u!1 &1316891497
 GameObject:
   m_ObjectHideFlags: 0
@@ -10077,6 +10104,7 @@ MonoBehaviour:
   damage: 30
   projectileSpeed: 10
   shootingCooldown: 0.5
+  exp: 100
   isGizmosEnabled: 0
   isShooting: 0
   direction: {x: 0, y: 0}
@@ -10848,6 +10876,7 @@ MonoBehaviour:
   damage: 8
   projectileSpeed: 5
   shootingCooldown: 0.1
+  exp: 100
   isGizmosEnabled: 0
   isShooting: 0
   direction: {x: 0, y: 0}
@@ -10930,6 +10959,7 @@ MonoBehaviour:
   damage: 8
   projectileSpeed: 5
   shootingCooldown: 0.1
+  exp: 100
   isGizmosEnabled: 0
   isShooting: 0
   direction: {x: 0, y: 0}
