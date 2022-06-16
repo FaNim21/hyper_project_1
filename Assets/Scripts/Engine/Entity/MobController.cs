@@ -73,7 +73,7 @@ public class MobController : Entity
     {
         //Narazie jest to bazowa metoda do przyjmowania dmg
 
-        Popup.Create(transform.position, damage.ToString(), Color.red, transform);
+        Popup.Create(transform.position, damage.ToString(), Color.red);
         health -= damage;
     }
 

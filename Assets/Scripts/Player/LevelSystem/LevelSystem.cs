@@ -1,10 +1,16 @@
 using HyperRPG.Engine.Visual;
-using UnityEngine;
 using System.Collections;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelSystem : MonoBehaviour
 {
     public PlayerController player;
+
+    [Header("HUD")]
+    public TextMeshProUGUI textLevel;
+    public Image imageFillLevel;
 
     [Header("Wartosci")]
     [SerializeField] private int level;
@@ -13,7 +19,7 @@ public class LevelSystem : MonoBehaviour
     public int globalExp;
 
     public int Level { get { return level; } private set { level = value; } }
-    public int CurrentExp {  get { return currentExp; } private set { currentExp = value; } }
+    public int CurrentExp { get { return currentExp; } private set { currentExp = value; } }
     public int ExpToNextLevel { get { return expToNextLevel; } private set { expToNextLevel = value; } }
 
     public void AddExp(int amount)
@@ -21,30 +27,36 @@ public class LevelSystem : MonoBehaviour
         globalExp += amount;
         CurrentExp += amount;
 
-        Popup.Create(transform.position, amount.ToString(), Color.yellow, transform);
+        Popup.Create(transform.position, amount.ToString(), Color.yellow);
 
+        int oldLevel = Level;
         while (CurrentExp >= ExpToNextLevel)
         {
-            StartCoroutine(OnLevelUp()); 
+            StartCoroutine(OnLevelUp());
             CurrentExp -= ExpToNextLevel;
-            ExpToNextLevel += Mathf.RoundToInt(ExpToNextLevel * 0.23f); 
+            ExpToNextLevel += Mathf.RoundToInt(ExpToNextLevel * 0.23f);
         }
 
-        //update hud
-
+        UpdateHud(oldLevel);
     }
 
     public IEnumerator OnLevelUp()
     {
         Level++;
-        Popup.Create(transform.position, "LEVEL UP!", Color.red, transform, 7);
-        yield return new WaitForSeconds(0.2f);
-        Popup.Create(transform.position, "LEVEL UP!", Color.yellow, transform, 7);
-        yield return new WaitForSeconds(0.2f);
-        Popup.Create(transform.position, "LEVEL UP!", Color.red, transform, 7);
+        Popup.Create(transform.position, "LEVEL UP!", Color.red, 7);
+        yield return new WaitForSeconds(0.1f);
+        Popup.Create(transform.position, "LEVEL UP!", Color.yellow, 7);
+        yield return new WaitForSeconds(0.1f);
+        Popup.Create(transform.position, "LEVEL UP!", Color.red, 7);
     }
 
+    public void UpdateHud(int oldLevel)
+    {
+        if(oldLevel != Level)
+            textLevel.SetText(level.ToString());
 
+        imageFillLevel.fillAmount = (float)CurrentExp / ExpToNextLevel;
+    }
 }
 
 

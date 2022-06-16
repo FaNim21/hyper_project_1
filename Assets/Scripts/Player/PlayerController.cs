@@ -45,7 +45,7 @@ public class PlayerController : Entity
 
     private readonly float _lerpBetweenSpeed = 2f;
     private readonly string _layerMask = "ProjectilePlayer";
-
+  
 
     public override void Awake()
     {
@@ -174,7 +174,7 @@ public class PlayerController : Entity
 
         health -= damage;
 
-        Popup.Create(transform.position, damage.ToString(), Color.red, transform);
+        Popup.Create(transform.position, damage.ToString(), Color.red);
         UpdateHealthBar();
     }
     private void UpdateHealthBar()

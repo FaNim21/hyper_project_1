@@ -186,9 +186,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textMesh: {fileID: 7988511396987884879}
-  _popup: {fileID: 0}
   lerpSpeed: 7
   moveYSpeedDefault: 2
   moveYSpeed: 0
-  movedText: {x: 0, y: 0, z: 0}
+  movedText: {x: 0, y: 0}
   timeAlive: 0

@@ -10,7 +10,7 @@ namespace HyperRPG.Engine.Visual
         private static ObjectPool<Popup> _pool;
 
         public TextMeshPro textMesh;
-        [SerializeField] private Popup _popup;
+        private Popup _popup;
 
         [Header("Wartosci")]
         public float lerpSpeed;
@@ -18,15 +18,8 @@ namespace HyperRPG.Engine.Visual
 
         [Header("Debug")]
         [ReadOnly] public float moveYSpeed;
-        [ReadOnly] public Vector3 movedText;
+        [ReadOnly] public Vector2 movedText;
         [ReadOnly] public float timeAlive;
-
-        [Header("On Create")]
-        public static Vector3 position;
-        public static string amount;
-        public static Color color;
-        public static Transform parent;
-        public static int fontSize;
 
 
         public static void InitializePooling()
@@ -37,12 +30,9 @@ namespace HyperRPG.Engine.Visual
             }, popup =>
             {
                 popup.moveYSpeed = popup.moveYSpeedDefault;
-                popup.movedText = Vector3.zero;
+                popup.movedText = Vector2.zero;
                 popup.timeAlive = 0f;
 
-                popup.transform.position = position;
-                popup.transform.SetParent(parent, false);
-                popup.Setup(popup, amount, color, fontSize);
                 popup.gameObject.SetActive(true);
             }, popup =>
             {
@@ -53,22 +43,17 @@ namespace HyperRPG.Engine.Visual
             }, false, 50, 300);
         }
 
-        public static void Create(Vector3 position, string amount, Color color, Transform parent, int fontSize = 5)
+        public static void Create(Vector2 position, string amount, Color color, int fontSize = 5)
         {
-            Popup.position = position;
-            Popup.amount = amount;
-            Popup.color = color;
-            Popup.parent = parent;
-            Popup.fontSize = fontSize;
-
             var popup = _pool.Get();
-            popup.Setup(popup, amount, color, fontSize);
+            popup.Setup(popup, position, amount, color, fontSize);
         }
 
-        public void Setup(Popup popup, string amountText, Color color, int fontSize)
+        public void Setup(Popup popup, Vector2 position, string amountText, Color color, int fontSize)
         {
             if (_popup == null) _popup = popup;
 
+            transform.position = position;
             textMesh.SetText(amountText.ToString());
             if (textMesh.color != color) textMesh.color = color;
             if (textMesh.fontSize != fontSize) textMesh.fontSize = fontSize;
@@ -79,9 +64,10 @@ namespace HyperRPG.Engine.Visual
             timeAlive += Time.deltaTime;
 
             moveYSpeed = Mathf.Lerp(moveYSpeed, 0, lerpSpeed * Time.deltaTime);
-            movedText += new Vector3(0, moveYSpeed) * Time.deltaTime;
+            movedText += new Vector2(0, moveYSpeed) * Time.deltaTime;
 
-            transform.localPosition = Vector3.zero + new Vector3(0, 0.9f, 0) + movedText;
+            var animMove = new Vector2(0, 0.9f) + movedText;
+            transform.position = (Vector2)transform.position + animMove * Time.deltaTime;
 
             if (timeAlive >= 1f)
                 _pool.Release(_popup);
