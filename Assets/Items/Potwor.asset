@@ -15,5 +15,5 @@ MonoBehaviour:
   ID: 4
   Name: Potwor1
   Description: OPIS_potwor1
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: 36e52def6d14e0e47be55680a00906e9, type: 3}
   MaxStackSize: 5

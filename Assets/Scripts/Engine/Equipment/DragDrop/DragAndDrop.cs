@@ -16,27 +16,27 @@ public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler
 
     public void OnBeginDrag(PointerEventData eventData) // Interface wzywany zanim rozpocznie sie przesuwanie przedmiotu
     {
-        Debug.Log("OnBeginDrag");
+        Utils.Log("OnBeginDrag");
         canvasGroup.alpha = .6f; // zwiększa poziom przezroczystości, gdy łapiemy za przedmiot
         canvasGroup.blocksRaycasts = false;
     }
 
     public void OnDrag(PointerEventData eventData) // Interface wzywany za kazdym razem gdy przedmiot jest przesuwany (w trakcie ruszania kursorem)
     {
-        Debug.Log("OnDrag");
+        Utils.Log("OnDrag");
         rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor; // przesuwanie itemem, skalowane wraz z canvasem
     }
 
     public void OnEndDrag(PointerEventData eventData) // Interface wzywany gdy konczymy przesuwac przedmiot
     {
-        Debug.Log("OnDragEnd");
+        Utils.Log("OnDragEnd");
         canvasGroup.alpha = 1f; // na koniec łapania powrót do normalnego poziomu przezroczystosci
         canvasGroup.blocksRaycasts = true;
     }
 
     public void OnPointerDown(PointerEventData eventData) // Interface wzywany gdy wykrywa klikniecie myszki na przedmiot
     {
-        Debug.Log("OnPointer");
+        Utils.Log("OnPointer");
     }
     
 

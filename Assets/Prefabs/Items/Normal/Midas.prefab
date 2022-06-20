@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6935728377549723104}
   - component: {fileID: 6935728377549723107}
   - component: {fileID: 6935728377549723105}
-  - component: {fileID: 6806256301688571525}
+  - component: {fileID: 8483577924676034305}
   m_Layer: 0
   m_Name: Midas
   m_TagString: Untagged
@@ -112,7 +112,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &6806256301688571525
+--- !u!114 &8483577924676034305
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,5 +124,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4736111fd87da79478ca7d31e4ad420a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PickUpRadius: 0.3
   ItemData: {fileID: 11400000, guid: 612e31bd4fa1dc5499029361fc5781c3, type: 2}

@@ -15,7 +15,7 @@ public class ItemDrag : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log("DragBegin");
+        Utils.Log("DragBegin");
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -25,13 +25,13 @@ public class ItemDrag : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("DragEnd");
+        Utils.Log("DragEnd");
 
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("Point");
+        Utils.Log("Point");
     }
 }
 

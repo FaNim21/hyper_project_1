@@ -8,7 +8,6 @@ using System.Linq;
 public class Inventory
 {
     [SerializeField] private List<InventorySlot> inventorySlots;
-
     public List<InventorySlot> InventorySlots => inventorySlots;
     public int InventorySize => inventorySlots.Count;
 
@@ -37,7 +36,6 @@ public class Inventory
                 }
             }
         }
-
         if (HasFreeSlot(out InventorySlot freeSlot)) // Wybiera pierwszy wolny slot
         {
             freeSlot.UpdateInventorySlot(itemToAdd, amountToAdd);
@@ -46,17 +44,16 @@ public class Inventory
         }
         return false;
     }
-
     public bool ContainsItem(ItemData itemToAdd, out List<InventorySlot> invSlot)
     {
         invSlot = InventorySlots.Where(i => i.ItemData == itemToAdd).ToList();
-        Debug.Log(invSlot.Count);
-        return invSlot == null ? false: true;
+        Utils.Log(invSlot.Count.ToString());
+        return invSlot != null;
     }
 
     public bool HasFreeSlot(out InventorySlot freeSlot)
     {
         freeSlot = InventorySlots.FirstOrDefault(i => i.ItemData == null);
-        return freeSlot == null ? false : true;
+        return freeSlot != null;
     }
 }

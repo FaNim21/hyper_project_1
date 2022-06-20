@@ -31,6 +31,6 @@ public abstract class InvDisplay : MonoBehaviour
 
     public void SlotClicked(InvSlot_UI clickedSlot)
     {
-        Debug.Log("Wcisnieto Slot, probka");
+        Utils.Log("Wcisnieto Slot, probka");
     }
 }

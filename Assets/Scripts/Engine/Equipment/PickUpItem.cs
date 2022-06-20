@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class PickingUpItems : MonoBehaviour
+public class PickUpItem : MonoBehaviour
 {
-    public float PickUpRadius = 0.5f;
+    public float PickUpRadius = 1f;
     public ItemData ItemData;
 
     private BoxCollider2D myCollider;
@@ -13,16 +13,16 @@ public class PickingUpItems : MonoBehaviour
         myCollider.isTrigger = true;
         myCollider.edgeRadius = PickUpRadius;
     }
-
+/*
     private void OnTriggerEnter2D(Collider2D collision)
     {
         var inventory = collision.transform.GetComponent<InventoryPlayer>();
 
         if (!inventory) return;
 
-        if(inventory.InventorySystem.AddToInventory(ItemData, 1))
+        if (inventory.InventorySystem.AddToInventory(ItemData, 1))
         {
             Destroy(this.gameObject);
         }
-    }
+    }*/
 }

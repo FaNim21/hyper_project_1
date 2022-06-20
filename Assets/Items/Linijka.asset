@@ -15,5 +15,5 @@ MonoBehaviour:
   ID: 1
   Name: Linijka1
   Description: OPIS_linijka1
-  Icon: {fileID: 0}
-  MaxStackSize: 5
+  Icon: {fileID: 21300000, guid: 2a9e3342f408c3e44acac6530b9a2f33, type: 3}
+  MaxStackSize: 1

@@ -2,6 +2,7 @@
 
 
 Na teraz :
+0. zmienic inventory (dynamiczny quickbar, nie ustawiany na sztywno) i USUN¥Æ LINQ
 1. Kontynuacja systemu stackowania i ³¹czenia inventory z UI
 2. Instancja drag n' dropa dla itemslotu
 3. Mo¿liwoœæ wyrzucania itemów z EQ na ziemiê (poza slot)
@@ -24,3 +25,4 @@ PóŸniej :
 Igor :
 1. Dodanie do grafiki inventory systemu poziomu
 2. Podzieliæ inventory na grafiki
+3. wszystko i nic

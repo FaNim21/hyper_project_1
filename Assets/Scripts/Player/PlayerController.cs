@@ -152,18 +152,19 @@ public class PlayerController : Entity
         health = maxHealth;
     }
 
-/*    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Item item = collision.GetComponent<Item>();
-        if (item != null) 
+        if (collision.TryGetComponent<Item>(out var item))
         {
-            Debug.Log(item.data.name + " picked");
-            bool isPickedUp = inventory.Add(item.data); // Dodaje dotkniety przedmiot do ekwipunku (w kodzie)
-            
+            Utils.Log(item.ItemData.Name + " picked");
+            bool isPickedUp = inventory.AddToInventory(item.ItemData, 1); // Dodaje dotkniety przedmiot do ekwipunku (w kodzie)
+
             if (isPickedUp)
             {
                 Destroy(item.gameObject); // Przedmiot, ktorego dotyka gracz jest niszczony (znika)
             }
         }
-    }*/
+    }
+
+  
 }
