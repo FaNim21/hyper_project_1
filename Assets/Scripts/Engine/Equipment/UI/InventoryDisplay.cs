@@ -6,30 +6,29 @@ public abstract class InventoryDisplay : MonoBehaviour
 {
     [SerializeField] MouseItemData mouseInventoryItem;
 
-    protected Inventory inventorySystem;
-    protected Dictionary<InventorySlot_UI, InventorySlot> slotDictionary; // pairing up the UI slots with inventory system slots
+    public Inventory inventory;
+    public List<InventorySlot> slots = new(); // pairing up the UI slots with inventory system slots
 
-    public Inventory InventorySystem => inventorySystem;
-    public Dictionary<InventorySlot_UI, InventorySlot> SlotDictionary => slotDictionary;
+    public int displaySize;
 
-    protected virtual void Start()
+
+    public virtual void Start()
     {
-
+        //AssignSlot();
     }
 
-    public abstract void AssignSlot(Inventory invToDisplay);
+    //public abstract void AssignSlot();
 
     protected virtual void UpdateSlot(InventorySlot updatedSlot)
     {
-        foreach (var slot in SlotDictionary)
-        {
-            if (slot.Value == updatedSlot)
-            {
-                slot.Key.UpdateUISlot(updatedSlot);
-            }
-        }
+        /*slotDictionary.TryGetValue(updatedSlot, out var slotUI);
+        slotUI.UpdateUISlot();*/
+
+        /*foreach (var slot in slots)
+            if (slot == updatedSlot)
+                slot.UpdateUISlot(updatedSlot);*/
     }
-    public void SlotClicked(InventorySlot_UI clickedSlot)
+    public void SlotClicked(InventorySlot clickedSlot)
     {
         Utils.Log("Slot clicked");
         // add splitting the stacks(maybe by shift), combining stacks, swapping items, clicking and draggin item from the slot

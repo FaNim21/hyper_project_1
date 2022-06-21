@@ -28,11 +28,10 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Entity entity = collision.transform.parent.GetComponent<Entity>();
-        if (entity != null)
+        /*if (collision.transform.parent.TryGetComponent<Entity>(out var entity))
         {
             entity.TakeDamage(damage);
             Destroy(gameObject);
-        }
+        }*/
     }
 }

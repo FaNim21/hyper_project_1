@@ -1,74 +1,107 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 [System.Serializable]
-public class InventorySlot
+public class InventorySlot : MonoBehaviour
 {
-    [SerializeField] private ItemData itemData; // reference to data of our item
-    [SerializeField] private int stackSize; // to store the current stack of item
+    public InventoryDisplay ParentDisplay { get; private set; }
 
-    public ItemData ItemData => itemData; // getter
-    public int StackSize => stackSize; // getter
+    [SerializeField] private Image image;
+    [SerializeField] private TextMeshProUGUI textItemCount;
+    [SerializeField] private Button button;
 
-    public InventorySlot(ItemData source, int amount) // constructor to non-empty slot
+    public SlotData data; //reference to data of our item
+
+    public ItemData ItemData { get { return data.itemData; } set { data.itemData = value; } } // getter & setter
+    public int StackSize { get { return data.quantity; } set { data.quantity = value; } } // getter & setter
+
+
+    private void Awake()
     {
-        itemData = source;
-        stackSize = amount;
+        ClearData();
+
+        button.onClick.AddListener(OnUISlotClick);
+
+        ParentDisplay = transform.parent.GetComponent<InventoryDisplay>();
     }
 
-    public InventorySlot() // constructor to an empty slot
+    public void ClearData() // method that clears the slot
     {
-        ClearSlot();
+        ItemData = null;
+        StackSize = 0;
     }
-
-    public void ClearSlot() // method that clears the slot
-    {
-        itemData = null;
-        stackSize = -1;
-    }
-
     public void UpdateInventorySlot(ItemData data, int amount) // method that updates the slot with entire data of an item and its amount
     {
-        itemData = data;
-        stackSize = amount;
+        ItemData = data;
+        StackSize = amount;
     }
 
     public bool EnoughRoomLeftInStack(int amountToAdd, out int amountRemaining) // method that checks if theres anough room (enough amount to maxstacksize) to add
-
     {
-        amountRemaining = ItemData.MaxStackSize - stackSize;
+        amountRemaining = ItemData.MaxStackSize - StackSize;
 
         return EnoughRoomLeftInStack(amountToAdd);
     }
-
     public bool EnoughRoomLeftInStack(int amountToAdd)
     {
-        if (itemData == null || itemData != null && stackSize + amountToAdd <= itemData.MaxStackSize) 
+        return ItemData == null || ItemData != null && StackSize + amountToAdd <= ItemData.MaxStackSize;
+        /*if (ItemData == null || ItemData != null && StackSize + amountToAdd <= ItemData.MaxStackSize)
             return true; // if current stacksize plus amount we want to add is <= max of stacksize of the item, then there is enough room and we can add to this one stack
-        else 
-            return false; // else we cannot
+        else
+            return false; // else we cannot*/
     }
 
-    public void AddToStack(int amount)
-    {
-        stackSize = stackSize + amount;
-    }
-
-    public void RemoveFromStack(int amount)
-    {
-        stackSize = stackSize - amount;
-    }
+    public void AddToStack(int amount) => StackSize += amount;
+    public void RemoveFromStack(int amount) => StackSize -= amount;
 
     public void AssignItem(InventorySlot invSlot)
     {
-        if (itemData == invSlot.ItemData) AddToStack(invSlot.StackSize);
+        if (ItemData == invSlot.ItemData) AddToStack(invSlot.StackSize);
         else
         {
-            itemData = invSlot.ItemData;
-            stackSize = 0;
+            ItemData = invSlot.ItemData;
+            StackSize = 0;
             AddToStack(invSlot.StackSize);
         }
     }
 
+    /*public void Init(InventorySlot slot)
+    {
+        UpdateUISlot(slot);
+    }*/
+
+    public void UpdateUISlot(SlotData newData)
+    {
+        /*if (slot.ItemData != null)
+        {
+            image.sprite = slot.ItemData.Icon;
+            image.color = Color.white;
+
+            if (slot.StackSize > 1) textItemCount.text = slot.StackSize.ToString();
+            else textItemCount.text = "";
+        }
+        else
+        {
+            ClearData();
+        }*/
+
+        data = newData;
+
+        image.sprite = newData.itemData.Icon;
+        image.color = Color.white;
+
+        if (StackSize > 1) textItemCount.text = StackSize.ToString();
+        else textItemCount.text = "";
+    }
+
+    public void ClearSlot()
+    {
+        ClearData();
+        image.sprite = null;
+        image.color = Color.clear;
+        textItemCount.text = "";
+    }
+
+    public void OnUISlotClick() => ParentDisplay.SlotClicked(this);
 }
