@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// trigerrin' pick ups
+/// </summary>
 public class PickUpItem : MonoBehaviour
 {
     public float PickUpRadius = 1f;

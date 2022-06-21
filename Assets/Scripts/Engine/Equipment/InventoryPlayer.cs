@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+/// <summary>
+/// class to integrate player with inventory system, 
+/// player will have 2 inventory systems - one for quickbar, one for whole equipment
+/// </summary>
 [System.Serializable]
 public class InventoryPlayer : MonoBehaviour
 {

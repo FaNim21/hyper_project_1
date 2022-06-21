@@ -5,56 +5,70 @@ using UnityEngine;
 [System.Serializable]
 public class InventorySlot
 {
-    [SerializeField] private ItemData itemData;
-    [SerializeField] private int stackSize;
+    [SerializeField] private ItemData itemData; // reference to data of our item
+    [SerializeField] private int stackSize; // to store the current stack of item
 
-    public ItemData ItemData => itemData;
-    public int StackSize => stackSize;
+    public ItemData ItemData => itemData; // getter
+    public int StackSize => stackSize; // getter
 
-    public InventorySlot(ItemData source, int amount)
+    public InventorySlot(ItemData source, int amount) // constructor to non-empty slot
     {
         itemData = source;
         stackSize = amount;
     }
 
-    public InventorySlot()
+    public InventorySlot() // constructor to an empty slot
     {
         ClearSlot();
     }
 
-    public void ClearSlot()
+    public void ClearSlot() // method that clears the slot
     {
         itemData = null;
         stackSize = -1;
     }
 
-    public void UpdateInventorySlot(ItemData data, int amount)
+    public void UpdateInventorySlot(ItemData data, int amount) // method that updates the slot with entire data of an item and its amount
     {
         itemData = data;
         stackSize = amount;
     }
 
-    public bool RoomLeftInStack(int amountToAdd, out int amountRemaining)
+    public bool EnoughRoomLeftInStack(int amountToAdd, out int amountRemaining) // method that checks if theres anough room (enough amount to maxstacksize) to add
 
     {
         amountRemaining = ItemData.MaxStackSize - stackSize;
 
-        return RoomLeftInStack(amountToAdd);
+        return EnoughRoomLeftInStack(amountToAdd);
     }
 
-    public bool RoomLeftInStack(int amountToAdd)
+    public bool EnoughRoomLeftInStack(int amountToAdd)
     {
-        if (stackSize + amountToAdd <= itemData.MaxStackSize) return true;
-        else return false;
+        if (itemData == null || itemData != null && stackSize + amountToAdd <= itemData.MaxStackSize) 
+            return true; // if current stacksize plus amount we want to add is <= max of stacksize of the item, then there is enough room and we can add to this one stack
+        else 
+            return false; // else we cannot
     }
 
     public void AddToStack(int amount)
     {
-        stackSize += amount;
+        stackSize = stackSize + amount;
     }
 
     public void RemoveFromStack(int amount)
     {
-        stackSize -= amount;
+        stackSize = stackSize - amount;
     }
+
+    public void AssignItem(InventorySlot invSlot)
+    {
+        if (itemData == invSlot.ItemData) AddToStack(invSlot.StackSize);
+        else
+        {
+            itemData = invSlot.ItemData;
+            stackSize = 0;
+            AddToStack(invSlot.StackSize);
+        }
+    }
+
 }
